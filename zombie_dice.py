@@ -1,6 +1,11 @@
 import controle_rodada
 import iniciar
 import finalizar
+import painel
+
+
+def introducao():
+    painel.principal()
 
 
 def jogar():
@@ -74,4 +79,4 @@ def jogar():
 
 
 if __name__ == "__main__":
-    jogar()
+    introducao(), jogar()
