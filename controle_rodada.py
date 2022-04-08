@@ -16,7 +16,7 @@ def exibir_status(jogada, vermelho, amarelo, verde):
         print(f"Boa sorte!")
     else:
         print(f"Restam {len(contar)} dados no seu tubo")
-    print(f"Esta é a sua {controle}º rodada".upper())
+    print(f"Esta é a sua {controle}º Jogada".upper())
 
 
 def lancar_dados():
