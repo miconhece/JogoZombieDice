@@ -20,11 +20,20 @@ def cadastrar_jogadores(num_jogadores):
     return nomes
 
 
+def salvar_nome(jogadores):
+    nomes = jogadores
+    nome = 0
+    for i in range(len(nomes)):
+        nome = nomes[i]
+    return nome
+
+
 def listar_jogadores(nomes):
     nome_jogadores = tuple(nomes)
     for i in range(len(nomes)):
         print(f"{i+1}º Jogador: {nomes[i]}")
     print("Preparem-se para a partida!")
+    return nome_jogadores
 
 
 def dado_dificil():

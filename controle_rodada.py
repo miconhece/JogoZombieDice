@@ -75,9 +75,7 @@ def verificar_face(sorteado):
 def remover_dado(tubo_atual, sorteado, face):
     tubo = tubo_atual
     dado = sorteado
-    face_sorteada = face
     tubo.remove(dado)
-    if face_sorteada == "P":
-        tubo.append(tubo)
     return tubo
+
 

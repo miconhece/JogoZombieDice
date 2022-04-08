@@ -15,6 +15,11 @@ def marcar_tiro(placar_atual):
     return dano_sofrido
 
 
+def marcar_pontos(placar_atual):
+    pontos = placar_atual.get("cerebro")
+    return pontos
+
+
 def mensagem_pontuacao():
     print("Você conseguiu até agora:")
     # Informa a parcial de dados sorteados até o momento #
@@ -78,3 +83,7 @@ def contar_dados(restam):
     else:
         start = True
     return start
+
+
+def pontuacao_final(jogador, pontos):
+    pass

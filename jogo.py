@@ -7,7 +7,10 @@ def jogar():
     numero = iniciar.contar_jogadores()
     jogadores = tuple(iniciar.cadastrar_jogadores(numero))
     iniciar.listar_jogadores(jogadores)
+
     for i in range(len(jogadores)):
+        nome = jogadores[i]
+        print(nome)
         # PEGAR TUBO #
         vermelho = iniciar.dado_dificil()
         amarelo = iniciar.dado_intermediario()
@@ -24,6 +27,7 @@ def jogar():
             controle_rodada.exibir_status(jogada, vermelho, amarelo, verde)
             faces = []
 
+            placar_final = {}
             for _ in range(dados):
                 sorteado = controle_rodada.lancar_dados()
                 cor = controle_rodada.verificar_cor(sorteado, vermelho, amarelo, verde)
@@ -32,13 +36,20 @@ def jogar():
                 print(face)
                 faces.append(face)
                 tubo = controle_rodada.remover_dado(tubo, sorteado, face)
+                if face == "P":
+                    tubo.append(sorteado)
                 placar = finalizar.pontuar_jogada(placar, face)
                 print(placar)
+                pontos = placar.get("cerebro")
+                print(f"placar = {pontos}")
+                placar_final[nome] = pontos
+                print(f"Pontuação Final = {placar_final}")
 
             print(f"Restam {len(tubo)} dados!")
+            print(tubo)
             print(placar)
             dano = finalizar.marcar_tiro(placar)
-            print(dano)
+            print(f"DANO = {dano}")
 
             if dano < 3:
                 finalizar.mensagem_pontuacao()
