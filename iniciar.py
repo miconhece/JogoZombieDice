@@ -1,4 +1,10 @@
 def contar_jogadores():
+    """
+
+        Condição para iniciar o jogo: Só é iniciado, caso seja informado que dois ou mais jogadores
+        participarão.
+        :return: Retorna o número de participantes.
+        """
     while True:
         num_jogadores = int(input("Informe o número de jogadores: "))
         print("=" * 80)
@@ -13,6 +19,12 @@ def contar_jogadores():
 
 
 def cadastrar_jogadores(num_jogadores):
+    """
+
+    Recebe o nome dos jogadores por input e armazena em uma lista.
+    :param num_jogadores: Define quantidade de nomes que irá receber.
+    :return: lista com nome dos jogadores.
+    """
     numero = num_jogadores
     nomes = []
     if numero > 1:
@@ -31,8 +43,12 @@ def salvar_nome(jogadores):
     return nome
 
 
-def listar_jogadores(nomes):
-    nome_jogadores = tuple(nomes)
+def preparar_jogadores():
+    """
+
+    Exibe divisor zumbi para iniciar a partida.
+    :return: Não possui retorno
+    """
     print("            ______________            ".center(80))
     print("          /                \          ".center(80))
     print("  _____  |   ===      ===   |  _____  ".center(80))
@@ -44,25 +60,45 @@ def listar_jogadores(nomes):
     print("       \     -------------     /      ".center(80))
     print(f"      PREPAREM-SE PARA A PARTIDA!    ".center(80), '\n')
     print("="*80)
-    return nome_jogadores
 
 
 def dado_dificil():
+    """
+
+    Identifica o dado mais dificil de pontuar. Ele possui: 3 faces TIRO, 2 faces PASSO e apenas 1 face CEREBRO.
+    :return: retorna com o nome correspondente a cor vermelha, carregando suas faces "TPTCTP"
+    """
     vermelho = "TPTCTP"
     return vermelho
 
 
 def dado_intermediario():
+    """
+
+    Identifica o dado de dificuldade mediana. Ele possui 2 faces TIRO, 2 faces PASSO e 2 faces CEREBRO
+    :return: retorna com o nome correspondente a cor amarela, carregando suas faces "PCTPCT"
+    """
     amarelo = "PCTPCT"
     return amarelo
 
 
 def dado_facil():
+    """
+
+    Identifica o dado mais fácil de pontuar. Ele possui apenas 1 face TIRO, 2 faces PASSO e 3 faces CEREBRO
+    :return: retorna com o nome correspondente a cor verde, carregando suas faces "CPCTCP"
+    """
     verde = "CPCTCP"
     return verde
 
 
 def receber_tubo():
+    """
+
+    Constrói o tubo do jogo carregando os tipos de dado através das respectivas funções de cada dado. Armazena uma
+    lista com 13 dados, sendo: 3 da cor VERMELHA, 4 da cor AMARELA e 6 da cor VERDE.
+    :return: lista contendo os 13 dados.
+    """
     dado_vermelho = dado_dificil()
     dado_amarelo = dado_intermediario()
     dado_verde = dado_facil()
@@ -75,6 +111,12 @@ def receber_tubo():
 
 
 def fazer_jogada():
+    """
+
+    Recebe autorização para iniciar a partida.
+
+    :return: Verdadeiro ou falso. Se falso, entra em looping. 
+    """
     jogando = True
     while True:
         lancar_dados = input("Iniciar jogada? Digite S para Sim e N para Não: ").upper().strip()
