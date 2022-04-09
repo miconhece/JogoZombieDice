@@ -84,7 +84,6 @@ def fazer_jogada():
             break
         else:
             continue
-    print(jogando)
     return jogando
 
 
