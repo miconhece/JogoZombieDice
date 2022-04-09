@@ -55,12 +55,13 @@ def jogar():
             controle_rodada.parcial_tubo_cont(tubo)
 
             dano = finalizar.marcar_tiro(placar)
+            pontuacao = finalizar.acumulado(placar)
 
             if dano < 3:
                 finalizar.mensagem_pontuacao(dano)
-                finalizar.placar_cerebro(placar)
-                finalizar.placar_passo(placar)
-                finalizar.placar_tiro(placar)
+                finalizar.placar_cerebro(pontuacao)
+                finalizar.placar_passo(pontuacao)
+                finalizar.placar_tiro(pontuacao)
 
                 continuar = finalizar.jogar_novamente()
                 restam = len(tubo)
@@ -77,6 +78,8 @@ def jogar():
                 start = False
                 placar = {"cerebro": 0, "tiro": 0, "passo": 0}
 
+            placar_final = placar
+            print(placar_final)
             finalizar.final_turno(start)
 
 
