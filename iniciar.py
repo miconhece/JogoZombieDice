@@ -116,6 +116,12 @@ def receber_tubo():
     return tubo
 
 
+def iniciar_turno(jogador):
+    nome = jogador
+    print(f"Início do turno do zumbi \033[34m{nome}\033[m".center(90))
+    print("="*80)
+
+
 def fazer_jogada():
     """
 

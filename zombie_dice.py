@@ -12,10 +12,9 @@ def jogar():
     boas_vindas()
     numero = iniciar.contar_jogadores()
     jogadores = tuple(iniciar.cadastrar_jogadores(numero))
-    iniciar.listar_jogadores(jogadores)
+    iniciar.preparar_jogadores()
 
     for i in range(len(jogadores)):
-        nome = jogadores[i]
         # PEGAR TUBO #
         vermelho = iniciar.dado_dificil()
         amarelo = iniciar.dado_intermediario()
@@ -29,35 +28,32 @@ def jogar():
         start = iniciar.fazer_jogada()
 
         while start:
-            controle_rodada.exibir_status(jogada, vermelho, amarelo, verde)
+            jogada = jogada + 1
+            controle_rodada.exibir_status(tubo, jogada, vermelho, amarelo, verde)
             faces = []
 
             placar_final = {}
             for _ in range(dados):
+
                 sorteado = controle_rodada.lancar_dados()
                 cor = controle_rodada.verificar_cor(sorteado, vermelho, amarelo, verde)
                 controle_rodada.desenhar_dado(cor)
+
                 face = controle_rodada.verificar_face(sorteado)
-                print(face)
                 faces.append(face)
+
                 tubo = controle_rodada.remover_dado(tubo, sorteado, face)
                 if face == "P":
                     tubo.append(sorteado)
-                placar = finalizar.pontuar_jogada(placar, face)
-                print(placar)
-                pontos = placar.get("cerebro")
-                print(f"placar = {pontos}")
-                placar_final[nome] = pontos
-                print(f"Pontuação Final = {placar_final}")
 
-            print(f"Restam {len(tubo)} dados!")
-            print(tubo)
-            print(placar)
+                placar = finalizar.pontuar_jogada(placar, face)
+
+            controle_rodada.parcial_tubo_cont(tubo)
+
             dano = finalizar.marcar_tiro(placar)
-            print(f"DANO = {dano}")
 
             if dano < 3:
-                finalizar.mensagem_pontuacao()
+                finalizar.mensagem_pontuacao(dano)
                 finalizar.placar_cerebro(placar)
                 finalizar.placar_passo(placar)
                 finalizar.placar_tiro(placar)
@@ -76,6 +72,8 @@ def jogar():
                 print("Aguarde o próximo turno para jogar. ")
                 start = False
                 placar = {"cerebro": 0, "tiro": 0, "passo": 0}
+
+            finalizar.final_turno(start)
 
 
 def boas_vindas():
