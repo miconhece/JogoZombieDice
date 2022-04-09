@@ -17,12 +17,11 @@ def menu_principal():
 
     :return: retorna um operador para controlar chamada de função, conforme opção desejada.
     """
-    print("Menu Principal".ljust(20).upper()+'\n')
-    print(" 1. Ver Regulamento".rjust(20))
-    print(" 2. Iniciar Partida".rjust(20))
-    print(" 3. Sair".rjust(9))
-    print("_" * 80)
-    operacao = int(input("Informe a sua escolha: ".upper()))
+    print("Menu Principal".center(80).upper()+'\n')
+    print(" 1. Ver Regulamento ".center(80))
+    print(" 2. Iniciar Partida ".center(80))
+    print(" 3. Sair            ".center(80), '\n')
+    operacao = int(input("Informe a sua escolha >>>>>>>>  ".upper()))
     if operacao >= 1 or operacao <= 3:
         return operacao
     else:
@@ -42,10 +41,11 @@ def iniciar_menu():
             documentacao.regulamento()
             break
         elif operacao == 2:
+            print(separador*80)
             zombie_dice.jogar()
             break
         elif operacao == 3:
-            print("Vá com Deus.")
+            print("Que a força esteja com você!")
             break
     return operacao
 
