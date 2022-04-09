@@ -2,21 +2,27 @@ import random
 import iniciar
 
 
-def exibir_status(jogada, vermelho, amarelo, verde):
+def exibir_status(tubo, jogada, vermelho, amarelo, verde):
     contar = iniciar.receber_tubo()
-    controle = jogada + 1
+    tubo_atual = tubo
+    controle = jogada
     dificil = vermelho
     medio = amarelo
     facil = verde
     if controle == 1:
-        print(f"Você recebeu um tubo com {len(contar)} dados. Sendo:")
-        print(f"{contar.count(dificil)} dados vermelhos")
-        print(f"{contar.count(medio)} dados amarelos")
-        print(f"{contar.count(facil)} dados verdes")
-        print(f"Boa sorte!")
+        print(f"Você recebeu um tubo com {len(contar)} dados.         ".center(80))
+        print(f"{contar.count(dificil)} dados \033[31mvermelhos\033[m   ".center(90))
+        print(f"{contar.count(medio)} dados \033[33mamarelos\033[m    ".center(90))
+        print(f"{contar.count(facil)} dados \033[32mverdes\033[m      ".center(90))
+        print("=" * 80)
     else:
-        print(f"Restam {len(contar)} dados no seu tubo")
-    print(f"Esta é a sua {controle}º Jogada".upper())
+        print(f"Restam {len(tubo_atual)} dados no seu tubo".center(80))
+        print(f"{tubo.count(dificil)} dados \033[31mvermelhos\033[m   ".center(90))
+        print(f"{tubo.count(medio)} dados \033[33mamarelos\033[m    ".center(90))
+        print(f"{tubo.count(facil)} dados \033[32mverdes\033[m      ".center(90))
+        print("=" * 80)
+    print(f"Esta é a sua {controle}º Jogada. Lance 3 dados!".center(80).upper())
+    print("="*80)
 
 
 def lancar_dados():
@@ -39,37 +45,56 @@ def verificar_cor(sorteado, vermelho, amarelo, verde):
 
 def desenhar_dado(cor):
     cor_dado = cor
-    if cor_dado == "Vermelho":
-        print("   _________")
-        print("  /\        \ ")
-        print(" /  \  Verde \ ")
-        print("/    \________\ ")
-        print("\    /        / ")
-        print(" \  /        / ")
-        print("  \/________/")
-    elif cor_dado == "Amarelo":
-        print("   _________")
-        print("  /\        \ ")
-        print(" /  \ Amarelo\ ")
-        print("/    \________\ ")
-        print("\    /        / ")
-        print(" \  /        / ")
-        print("  \/________/")
-    elif cor_dado == "Verde":
-        print("   _________")
-        print("  /\        \ ")
-        print(" /  \Vermelho\ ")
-        print("/    \________\ ")
-        print("\    /        / ")
-        print(" \  /        / ")
-        print("  \/________/")
-    return "Dado Sorteado".center(15)
+    while True:
+        if input("Exibir a COR do dado? "
+                 "Digite S para Sim e N para Não: ").upper().strip() == "S":
+            if cor_dado == "Vermelho":
+                print("\033[32m")
+                print("   _________")
+                print("  /\        \ ")
+                print(" /  \  Verde \ ")
+                print("/    \________\ ")
+                print("\    /        / ")
+                print(" \  /        / ")
+                print("  \/________/")
+                print("\033[m")
+            elif cor_dado == "Amarelo":
+                print("\033[33m")
+                print("   _________")
+                print("  /\        \ ")
+                print(" /  \ Amarelo\ ")
+                print("/    \________\ ")
+                print("\    /        / ")
+                print(" \  /        / ")
+                print("  \/________/")
+                print("\033[m")
+            elif cor_dado == "Verde":
+                print("\033[31m")
+                print("   _________")
+                print("  /\        \ ")
+                print(" /  \Vermelho\ ")
+                print("/    \________\ ")
+                print("\    /        / ")
+                print(" \  /        / ")
+                print("  \/________/")
+                print("\033[m")
+        return "Dado Sorteado".center(15)
 
 
 def verificar_face(sorteado):
     dado_sorteado = sorteado
     face = random.choice(dado_sorteado)
-    return face
+    while True:
+        if input("Ver a FACE do dado? "
+                 "Digite S para Sim e N para Não: ").upper().strip() == "S":
+            if face == "P":
+                print("Sua vítima FUGIU!")
+            elif face == "C":
+                print("Você conseguiu comer um CEREBRO!")
+            elif face == "T":
+                print("Você levou um TIRO")
+        print("-"*80)
+        return face
 
 
 def remover_dado(tubo_atual, sorteado, face):
@@ -78,4 +103,15 @@ def remover_dado(tubo_atual, sorteado, face):
     tubo.remove(dado)
     return tubo
 
+
+def parcial_tubo_cont(tubo):
+    tubo_atual = tubo
+    for i in range(len(tubo_atual)):
+        dado_restante = tubo_atual[i]
+        if dado_restante == "TPTCTP":
+            tubo_atual[i] = iniciar.dado_dificil()
+        elif dado_restante == "PCTPCT":
+            tubo_atual[i] = iniciar.dado_intermediario()
+        elif dado_restante == "CPCTCP":
+            tubo_atual[i] = iniciar.dado_facil()
 
