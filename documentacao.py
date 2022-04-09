@@ -1,3 +1,5 @@
+import painel
+
 separador = "=" * 80
 linha = "-" * 80
 
@@ -19,17 +21,21 @@ def apresentacao():
     print(descricao["curso"].ljust(80))
     print(descricao["aluna"].ljust(80) + '\n')
     print(separador)
-    print("#######                                  ######                  ")
-    print("      #   ####  #    # #####  # ######    #     # #  ####  ###### ")
-    print("     #   #    # ##  ## #    # # #         #     # # #    # #      ")
-    print("    #    #    # # ## # #####  # #####     #     # # #      #####  ")
-    print("   #     #    # #    # #    # # #         #     # # #      #      ")
-    print("  #      #    # #    # #    # # #         #     # # #    # #      ")
-    print(" #######  ####  #    # #####  # ######    ######  #  ####  ###### "'\n')
+    print(" ______               _     _        _____  _           ".center(80))
+    print("|___  /              | |   (_)      |  __ \(_)          ".center(80))
+    print("   / / ___  _ __ ___ | |__  _  ___  | |  | |_| ___ ___  ".center(80))
+    print("  / / / _ \| '_ ` _ \| '_ \| |/ _ \ | |  | | |/ __/ _ \ ".center(80))
+    print(" / /_| (_) | | | | | | |_) | |  __/ | |__| | | (_|  __/ ".center(80))
+    print("/_____\___/|_| |_| |_|_.__/|_|\___| |_____/|_|\___\___| ".center(80), '\n')
     print(separador + '\n')
 
 
 def regulamento():
+    """
+    Exibe regulamento do jogo, como Regras, objetivo, pontuação e finalização do tuno.
+
+    :return: Não possui retorno.
+    """
     print(separador)
     print("Regulamento do Jogo".center(80).upper()+'\n')
     print("Objetivo Principal:".ljust(25)+"Este jogo conta com 13 dados e um tubo para guardá-los."+'\n' +
@@ -47,7 +53,7 @@ def regulamento():
           " ".ljust(25) + "Espingarda - Significa que sua vítima revidou e você perdeu um ponto.".ljust(55)+'\n')
     print(" ".ljust(25) + "Jogadas".upper() + '\n')
     print(" ".ljust(25) + "Você pode fazer quantas jogadas quiser. Considerando que:" + '\n' +
-          " ".ljust(25) + "Dados com a face cérebro, não voltam para o tubo antes do final do seu turno." + '\n' +
+          " ".ljust(25) + "Dados com a face cérebro não voltam para o tubo antes do final do seu turno." + '\n' +
           " ".ljust(25) + "Dados com a face tiro também não voltam para o tubo antes do final do seu turno." + '\n' +
           " ".ljust(25) + "Você sempre precisará lançar 3 dados".ljust(55) + '\n')
     print(" ".ljust(25) + "Fim do Turno".upper() + '\n')
@@ -60,6 +66,11 @@ def regulamento():
           " ".ljust(25) + "Ao encerrar seu turno, começa o de outro jogador. Todos precisam jogar." + '\n' +
           " ".ljust(25) + "Ganha quem chegar a 13 cérebros até o final da rodada. " + '\n' +
           " ".ljust(25) + "Se houver empate, apenas os líderes jogam para desempatar.".ljust(55) + '\n')
+    if input("Retornar ao MENU PRINCIPAL? Digite S para Sim e N para SAIR DO JOGO: ").upper().strip() == "S":
+        print(separador)
+        painel.principal()
+    else:
+        print("Que a sorte esteja sempre a seu favor!")
 
 
 if __name__ == "__main__":
