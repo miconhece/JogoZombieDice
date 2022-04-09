@@ -16,6 +16,10 @@ def jogar():
 
     for i in range(len(jogadores)):
         # PEGAR TUBO #
+        jogador = jogadores[i]
+
+        turno = iniciar.iniciar_turno(jogador)
+
         vermelho = iniciar.dado_dificil()
         amarelo = iniciar.dado_intermediario()
         verde = iniciar.dado_facil()
