@@ -9,13 +9,13 @@ def introducao():
 
 
 def jogar():
+    boas_vindas()
     numero = iniciar.contar_jogadores()
     jogadores = tuple(iniciar.cadastrar_jogadores(numero))
     iniciar.listar_jogadores(jogadores)
 
     for i in range(len(jogadores)):
         nome = jogadores[i]
-        print(nome)
         # PEGAR TUBO #
         vermelho = iniciar.dado_dificil()
         amarelo = iniciar.dado_intermediario()
@@ -78,5 +78,10 @@ def jogar():
                 placar = {"cerebro": 0, "tiro": 0, "passo": 0}
 
 
+def boas_vindas():
+    print("----- Bem vindo ao ZOMBIE DICE -----".center(80))
+    print("=" * 80)
+
+
 if __name__ == "__main__":
-    introducao(), jogar()
+    introducao()
