@@ -25,13 +25,19 @@ def cadastrar_jogadores(num_jogadores):
     :param num_jogadores: Define quantidade de nomes que irá receber.
     :return: lista com nome dos jogadores.
     """
-    numero = num_jogadores
     nomes = []
-    if numero > 1:
-        for i in range(numero):
-            nome = input(f"Digite o nome do {i+1}º jogador: ").upper().strip()
-            nomes.append(nome)
-        print("="*80)
+    num = num_jogadores
+    indice = 1
+    while num > 0:
+        nome = input(f"Informe o nome do {indice}º jogador: ").upper().strip()
+        if nome in nomes:
+            if input("Nome já cadastrado. Deseja alterar (s/n)? ").lower() == "n":
+                continue
+            else:
+                nome = input(f"Informe o nome do {indice}º jogador: ").strip()
+        nomes.append(nome)
+        indice += 1
+        num -= 1
     return nomes
 
 
@@ -115,7 +121,7 @@ def fazer_jogada():
 
     Recebe autorização para iniciar a partida.
 
-    :return: Verdadeiro ou falso. Se falso, entra em looping. 
+    :return: Verdadeiro ou falso. Se falso, entra em looping.
     """
     jogando = True
     while True:
