@@ -10,6 +10,19 @@ def pontuar_jogada(placar, face):
     return placar_atual
 
 
+def acumulado(placar):
+    placar_atual = placar
+    lista = []
+    pontos_cerebro = placar_atual.get("cerebro")
+    lista.append(pontos_cerebro)
+    pontos_tiro = placar_atual.get("tiro")
+    lista.append(pontos_tiro)
+    pontos_passo = placar_atual.get("passo")
+    lista.append(pontos_passo)
+    receber_placar = tuple(lista)
+    return receber_placar
+
+
 def marcar_tiro(placar_atual):
     dano_sofrido = placar_atual.get("tiro")
     return dano_sofrido
@@ -25,47 +38,46 @@ def mensagem_pontuacao(dano):
     print("Você conseguiu até agora:".center(80))
     # Informa a parcial de dados sorteados até o momento #
 
+# placar = {"cerebro": 0, "passo": 0, "tiro": 0}
+
 
 def placar_cerebro(placar):
-    pontuacao = placar.get("cerebro")
+    pontuacao = placar
     while True:
-        if pontuacao == 1:
+        if pontuacao[0] == 1:
             print("Comer 1 cérebro!".center(80))
             break
-        elif pontuacao > 1:
-            print(f"Comer {pontuacao} cérebros!".center(80))
+        elif pontuacao[0] > 1:
+            print(f"Comer {pontuacao[0]} cérebros!".center(80))
             break
-        elif pontuacao < 1:
+        elif pontuacao[0] < 1:
             print("Não comer nenhum cérebro!".center(80))
             break
     return pontuacao
 
 
 def placar_tiro(placar):
-    pontuacao = placar.get("tiro")
+    pontuacao = placar
     while True:
-        if pontuacao == 1:
-            print("Levar 1 de dano!".center(80))
+        if pontuacao[2] > 0:
+            print(f"Dano = {pontuacao[2]} de 3. Cuidado!".center(80))
             break
-        elif pontuacao > 1:
-            print(f"Dano = {pontuacao} de 3. Cuidado!".center(80))
-            break
-        elif pontuacao < 1:
+        elif pontuacao[2] == 0:
             print("Não levar dano! Parabéns!".center(80))
             break
     return pontuacao
 
 
 def placar_passo(placar):
-    pontuacao = placar.get("passo")
+    pontuacao = placar
     while True:
-        if pontuacao == 1:
+        if pontuacao[1] == 1:
             print("Deixar 1 vítima fugir!".center(80))
             break
-        elif pontuacao > 1:
-            print(f"Deixar {pontuacao} vítimas fugirem!".center(80))
+        elif pontuacao[1] > 1:
+            print(f"Deixar {pontuacao[1]} vítimas fugirem!".center(80))
             break
-        elif pontuacao < 1:
+        elif pontuacao[1] < 1:
             continue
     return pontuacao
 
@@ -90,7 +102,7 @@ def contar_dados(restam):
 def final_turno(start):
     turno = start
     if not turno:
-        print("Turno Encerrado. Aguardando o próximo jogador...")
+        print("Turno Encerrado. ")
         print("="*80)
     return turno
 
