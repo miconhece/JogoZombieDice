@@ -3,6 +3,7 @@ def contar_jogadores():
 
         Condição para iniciar o jogo: Só é iniciado, caso seja informado que dois ou mais jogadores
         participarão.
+
         :return: Retorna o número de participantes.
         """
     while True:
@@ -41,14 +42,6 @@ def cadastrar_jogadores(num_jogadores):
     return nomes
 
 
-def salvar_nome(jogadores):
-    nomes = jogadores
-    nome = 0
-    for i in range(len(nomes)):
-        nome = nomes[i]
-    return nome
-
-
 def preparar_jogadores():
     """
 
@@ -74,8 +67,8 @@ def dado_dificil():
     Identifica o dado mais dificil de pontuar. Ele possui: 3 faces TIRO, 2 faces PASSO e apenas 1 face CEREBRO.
     :return: retorna com o nome correspondente a cor vermelha, carregando suas faces "TPTCTP"
     """
-    vermelho = "TPTCTP"
-    return vermelho
+
+    return 'T', 'P', 'T', 'C', 'T', 'P'
 
 
 def dado_intermediario():
@@ -84,8 +77,8 @@ def dado_intermediario():
     Identifica o dado de dificuldade mediana. Ele possui 2 faces TIRO, 2 faces PASSO e 2 faces CEREBRO
     :return: retorna com o nome correspondente a cor amarela, carregando suas faces "PCTPCT"
     """
-    amarelo = "PCTPCT"
-    return amarelo
+
+    return 'P', 'C', 'T', 'P', 'C', 'T'
 
 
 def dado_facil():
@@ -94,8 +87,8 @@ def dado_facil():
     Identifica o dado mais fácil de pontuar. Ele possui apenas 1 face TIRO, 2 faces PASSO e 3 faces CEREBRO
     :return: retorna com o nome correspondente a cor verde, carregando suas faces "CPCTCP"
     """
-    verde = "CPCTCP"
-    return verde
+
+    return 'C', 'P', 'C', 'T', 'C', 'P'
 
 
 def receber_tubo():
@@ -117,6 +110,11 @@ def receber_tubo():
 
 
 def iniciar_turno(jogador):
+    """
+    Informa o nome do jogador da rodada.
+    :param jogador: Recebe a lista com o nome de todos os jogadores
+    :return: Retorna o nome do jogador da vez.
+    """
     nome = jogador
     print(f"Início do turno do zumbi \033[34m{nome}\033[m".center(90))
     print("="*80)
