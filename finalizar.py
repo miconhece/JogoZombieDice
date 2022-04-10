@@ -14,22 +14,22 @@ def acumulado(placar):
     placar_atual = placar
     lista = []
     pontos_cerebro = placar_atual.get("cerebro")
-    lista.append(pontos_cerebro)
+    lista.insert(0, pontos_cerebro)
     pontos_tiro = placar_atual.get("tiro")
-    lista.append(pontos_tiro)
+    lista.insert(2, pontos_tiro)
     pontos_passo = placar_atual.get("passo")
-    lista.append(pontos_passo)
+    lista.insert(1, pontos_passo)
     receber_placar = tuple(lista)
     return receber_placar
 
 
-def marcar_tiro(placar_atual):
-    dano_sofrido = placar_atual.get("tiro")
+def marcar_tiro(placar):
+    dano_sofrido = placar.get("tiro")
     return dano_sofrido
 
 
-def marcar_pontos(placar_atual):
-    pontos = placar_atual.get("cerebro")
+def marcar_pontos(placar):
+    pontos = placar.get("cerebro")
     return pontos
 
 
@@ -51,7 +51,7 @@ def placar_cerebro(placar):
             print(f"Comer {pontuacao[0]} cérebros!".center(80))
             break
         elif pontuacao[0] < 1:
-            print("Não comer nenhum cérebro!".center(80))
+            print("Não comer nenhum cérebro")
             break
     return pontuacao
 
@@ -107,5 +107,9 @@ def final_turno(start):
     return turno
 
 
-def pontuacao_final(jogador, pontos):
-    pass
+def pontuacao_jogador(pontos):
+    pontuacao_final = pontos
+    return pontuacao_final
+
+
+
