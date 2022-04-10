@@ -3,12 +3,23 @@ import iniciar
 
 
 def exibir_status(tubo, jogada, vermelho, amarelo, verde):
+    """
+    O jogador pode realizar n jogadas em um mesmo turno. A função retorna a mensagem
+    de acordo com a jogada do jogador.
+    :param tubo: Recebe lista com dados do tubo
+    :param jogada: Recebe o numero de vezes que o jogador fez jogada
+    :param vermelho: Recebe dado vermelho
+    :param amarelo: recebe dado amarelo
+    :param verde: recebe dado verde
+    :return: Não possui retorno
+    """
     contar = iniciar.receber_tubo()
     tubo_atual = tubo
     controle = jogada
     dificil = vermelho
     medio = amarelo
     facil = verde
+
     if controle == 1:
         print(f"Você recebeu um tubo com {len(contar)} dados.         ".center(80))
         print(f"{contar.count(dificil)} dados \033[31mvermelhos\033[m   ".center(90))
@@ -34,12 +45,12 @@ def lancar_dados():
 def verificar_cor(sorteado, vermelho, amarelo, verde):
     cor = sorteado
     dado = vermelho, amarelo, verde
-    if cor == "CPCTCP":
-        cor = "Vermelho"
-    elif cor == "PCTPCT":
-        cor = "Amarelo"
-    elif cor == "TPTCTP":
+    if cor == tuple("CPCTCP"):
         cor = "Verde"
+    elif cor == tuple("PCTPCT"):
+        cor = "Amarelo"
+    elif cor == tuple("TPTCTP"):
+        cor = "Vermelho"
     return cor
 
 
@@ -48,7 +59,7 @@ def desenhar_dado(cor):
     while True:
         if input("Exibir a COR do dado? "
                  "Digite S para Sim e N para Não: ").upper().strip() == "S":
-            if cor_dado == "Vermelho":
+            if cor_dado == "Verde":
                 print("\033[32m")
                 print("   _________")
                 print("  /\        \ ")
@@ -68,7 +79,7 @@ def desenhar_dado(cor):
                 print(" \  /        / ")
                 print("  \/________/")
                 print("\033[m")
-            elif cor_dado == "Verde":
+            elif cor_dado == "Vermelho":
                 print("\033[31m")
                 print("   _________")
                 print("  /\        \ ")
@@ -108,10 +119,10 @@ def parcial_tubo_cont(tubo):
     tubo_atual = tubo
     for i in range(len(tubo_atual)):
         dado_restante = tubo_atual[i]
-        if dado_restante == "TPTCTP":
+        if dado_restante == tuple("TPTCTP"):
             tubo_atual[i] = iniciar.dado_dificil()
-        elif dado_restante == "PCTPCT":
+        elif dado_restante == tuple("PCTPCT"):
             tubo_atual[i] = iniciar.dado_intermediario()
-        elif dado_restante == "CPCTCP":
+        elif dado_restante == tuple("CPCTCP"):
             tubo_atual[i] = iniciar.dado_facil()
 
