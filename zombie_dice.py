@@ -15,8 +15,8 @@ def jogar():
     numero = iniciar.contar_jogadores()
     jogadores = tuple(iniciar.cadastrar_jogadores(numero))
 
-    partida = True
     rodada = 0
+    partida = True
 
     while partida:
 
@@ -75,7 +75,6 @@ def jogar():
                     finalizar.mensagem_pontuacao()
                     finalizar.placar_cerebro(pontuacao)
                     pontos = finalizar.marcar_pontos(placar)
-                    ranking[jogador] += pontos
                     finalizar.placar_passo(pontuacao)
                     finalizar.placar_tiro(pontuacao)
 
@@ -92,10 +91,14 @@ def jogar():
                     start = False
                     placar = {"cerebro": 0, "tiro": 0, "passo": 0}
                     pontos = 0
-
                     ranking[jogador] += pontos
 
+                ranking[jogador] += pontos
+
                 finalizar.final_turno(start)
+                partida = classificacao.vencedor(ranking, rodada)
+                if not partida:
+                    classificacao.classificacao_geral(ranking, partida)
 
         print(ranking)
 
