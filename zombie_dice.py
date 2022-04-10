@@ -58,7 +58,7 @@ def jogar():
                 print(face)
                 faces.append(face)
 
-                tubo = controle_rodada.remover_dado(tubo, sorteado, face)
+                tubo = controle_rodada.remover_dado(tubo, sorteado)
                 print(tubo)
                 if face == "P":
                     tubo.append(sorteado)
@@ -74,7 +74,7 @@ def jogar():
             print(pontuacao)
 
             if dano < 3:
-                finalizar.mensagem_pontuacao(dano)
+                finalizar.mensagem_pontuacao()
                 finalizar.placar_cerebro(pontuacao)
                 pontos = finalizar.marcar_pontos(placar)
                 finalizar.placar_passo(pontuacao)
@@ -96,7 +96,6 @@ def jogar():
                 pontos = 0
 
             ranking[jogador] = pontos
-            finalizar.pontuacao_jogador(pontos)
             placar_final = placar
             print(placar_final)
             finalizar.final_turno(start)
