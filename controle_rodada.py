@@ -37,12 +37,26 @@ def exibir_status(tubo, jogada, vermelho, amarelo, verde):
 
 
 def lancar_dados():
+    """
+
+    Recebe o tubo e sorteia aleatoriamente um dos seus dados.
+    :return: Dado sorteado
+    """
     tubo = iniciar.receber_tubo()
     dado_sorteado = random.choice(tubo)
     return dado_sorteado
 
 
 def verificar_cor(sorteado, vermelho, amarelo, verde):
+    """
+
+    Recebe dado sorteado e as cores possíveis. Faz verificação da cor do dado, que pode ser: Vermelho, Amarelo ou Verde
+    :param sorteado: recebe dado sorteado
+    :param vermelho: recebe dado vermelho
+    :param amarelo: recebe dado amarelo
+    :param verde: recebe dado verde
+    :return: Retorna tupla com a cor do dado
+    """
     cor = sorteado
     dado = vermelho, amarelo, verde
     if cor == tuple("CPCTCP"):
@@ -55,6 +69,12 @@ def verificar_cor(sorteado, vermelho, amarelo, verde):
 
 
 def desenhar_dado(cor):
+    """
+
+    Recebe a cor do dado sorteado e imprime um desenho com a cor do dado correspondente.
+    :param cor: recebe a cor do dado
+    :return: desenho com a cor do dado
+    """
     cor_dado = cor
     while True:
         if input("Exibir a COR do dado? "
@@ -93,6 +113,12 @@ def desenhar_dado(cor):
 
 
 def verificar_face(sorteado):
+    """
+
+    Recebe dado sorteado e sorteia uma das faces possíveis. Que pode ser: T: Tiro, C: Cerebro ou P: Passo
+    :param sorteado: dado sorteado
+    :return: face sorteada.
+    """
     dado_sorteado = sorteado
     face = random.choice(dado_sorteado)
     while True:
@@ -108,7 +134,14 @@ def verificar_face(sorteado):
         return face
 
 
-def remover_dado(tubo_atual, sorteado, face):
+def remover_dado(tubo_atual, sorteado):
+    """
+
+    Remove do tubo o dado sorteado
+    :param tubo_atual: recebe tubo com todos os dados disponíveis.
+    :param sorteado: dado a ser removido.
+    :return: tubo com dado removido.
+    """
     tubo = tubo_atual
     dado = sorteado
     tubo.remove(dado)
@@ -116,6 +149,12 @@ def remover_dado(tubo_atual, sorteado, face):
 
 
 def parcial_tubo_cont(tubo):
+    """
+
+    Reinicia o tubo com a configuração inicial de dados.
+    :param tubo: recebe tubo com dados disponíveis
+    :return: Não possui retorno
+    """
     tubo_atual = tubo
     for i in range(len(tubo_atual)):
         dado_restante = tubo_atual[i]
