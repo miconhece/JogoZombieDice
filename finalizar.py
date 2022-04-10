@@ -170,7 +170,7 @@ def final_turno(start):
     if not turno:
         print("Turno Encerrado. ")
         print("="*80)
-    return turno
+
 
 
 
