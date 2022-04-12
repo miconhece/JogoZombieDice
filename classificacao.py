@@ -5,7 +5,6 @@ def vencedor(ranking, rodada):
         lista = dic.values()
         lista_pontos = []
         lista_pontos.extend(lista)
-        print(lista_pontos)
         maior = -10000
         for i in lista_pontos:
             if i > maior:
