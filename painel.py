@@ -1,5 +1,5 @@
 import documentacao
-import zombie_dice
+from Materias.RaciocinioComputacional.Prototipo_ZombieDice import zombie_dice
 
 separador = "="
 
