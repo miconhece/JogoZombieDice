@@ -1,6 +1,5 @@
 import documentacao
-from Materias.RaciocinioComputacional.Prototipo_ZombieDice import zombie_dice
-
+import jogar_zombie_dice
 separador = "="
 
 
@@ -42,7 +41,7 @@ def iniciar_menu():
             break
         elif operacao == 2:
             print(separador*80)
-            zombie_dice.jogar()
+            jogar_zombie_dice.jogar()
             break
         elif operacao == 3:
             print("Que a força esteja com você!")
