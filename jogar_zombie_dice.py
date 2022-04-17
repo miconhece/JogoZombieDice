@@ -93,12 +93,12 @@ def jogar():
                     start = False
 
                 finalizar.final_turno(start)
-                score = classificacao.score_jogo(ranking)
+                score = classificacao.jogo(ranking)
                 partida = classificacao.vencedor(score)
 
         if not partida:
-            score = classificacao.score_jogo(ranking)
-            classificacao.classificacao_geral(ranking, partida, score)
+            score = classificacao.jogo(ranking)
+            classificacao.geral(ranking, partida, score)
 
 
 def boas_vindas():

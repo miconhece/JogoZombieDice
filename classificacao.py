@@ -1,4 +1,4 @@
-def score_jogo(ranking):
+def jogo(ranking):
     """
     Transforma os valores do dicionario ranking em uma lista. Extrai os pontos da lista e
     verifica qual a maior pontuacao.
@@ -30,21 +30,7 @@ def vencedor(score):
     return partida
 
 
-def contabilizar_pontos(placar, ranking, jogador):
-    """
-
-    :param placar: recebe o placar com o acumulado de pontos do turno
-    :param ranking: recebe o dicionario com o nome e pontos de cada jogador
-    :param jogador: recebe o nome de cada jogador
-    :return:
-    """
-    pontos = placar["cerebro"]
-    parcial = ranking[jogador]
-    placar_final = parcial + pontos
-    return placar_final
-
-
-def classificacao_geral(ranking, partida, score):
+def geral(ranking, partida, score):
     """
 
     Exibe uma lista com a pontuação de todos os jogadores.
