@@ -47,16 +47,6 @@ def marcar_tiro(placar):
     return dano_sofrido
 
 
-def marcar_pontos(placar):
-    """
-    Armazena isoladamente a pontuacao de cerebros, para verificacao dos pontos no turno do jogador.
-    :param placar: Recebe o placar com todos os pontos da rodada.
-    :return: Retorna quantidade de pontos acumulados.
-    """
-    pontos = placar.get("cerebro")
-    return pontos
-
-
 def mensagem_pontuacao():
     """
     Mensagem da pontuação ao final da jogada.

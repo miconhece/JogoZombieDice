@@ -27,8 +27,7 @@ def jogar():
             # PEGAR TUBO #
             jogador = jogadores[i]
             if rodada == 1:
-                pontos = 0
-                ranking[jogador] = pontos
+                ranking[jogador] = 0
             else:
                 pontos = ranking[jogador]
                 ranking[jogador] = pontos
@@ -71,14 +70,15 @@ def jogar():
                 dano = finalizar.marcar_tiro(placar)
                 pontuacao = finalizar.acumulado(placar)
 
+                cerebros = faces.count("C")
+
                 if dano < 3:
                     finalizar.mensagem_pontuacao()
                     finalizar.placar_cerebro(pontuacao)
-                    pontos = finalizar.marcar_pontos(placar)
                     finalizar.placar_passo(pontuacao)
                     finalizar.placar_tiro(pontuacao)
-
                     continuar = finalizar.jogar_novamente()
+                    ranking[jogador] += cerebros
                     restam = len(tubo)
 
                     if continuar == "S":
@@ -88,19 +88,17 @@ def jogar():
                 else:
                     print("Morrer... de novo! Você perdeu todos os pontos. ")
                     print("Aguarde o próximo turno para jogar. ")
-                    start = False
                     placar = {"cerebro": 0, "tiro": 0, "passo": 0}
-                    pontos = 0
-                    ranking[jogador] += pontos
-
-                ranking[jogador] += pontos
+                    ranking[jogador] = 0
+                    start = False
 
                 finalizar.final_turno(start)
-                partida = classificacao.vencedor(ranking, rodada)
-                if not partida:
-                    classificacao.classificacao_geral(ranking, partida)
+                score = classificacao.score_jogo(ranking)
+                partida = classificacao.vencedor(score)
 
-        print(ranking)
+        if not partida:
+            score = classificacao.score_jogo(ranking)
+            classificacao.classificacao_geral(ranking, partida, score)
 
 
 def boas_vindas():
