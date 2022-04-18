@@ -98,7 +98,7 @@ def jogar():  # Função que carrega toda a estrutura do jogo #
 
         if not partida:  # Caso partida encerrada #
             score = classificacao.jogo(ranking)  # Recebe pontuacao máxima #
-            classificacao.geral(ranking, partida, score)  # informa classificação e vencedor # 
+            classificacao.geral(ranking, partida, score)  # informa classificação e vencedor #
 
 
 def boas_vindas():
